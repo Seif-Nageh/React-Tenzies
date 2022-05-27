@@ -12,6 +12,7 @@ function App() {
   useEffect(() => {
     const allHeld = dices.every((dice) => dice.isSellected);
     const allSameValue = dices.every((dice) => dice.value === dices[0].value);
+
     if (allHeld && allSameValue) {
       return setTenzies((oldValue) => {
         return true;
@@ -77,7 +78,6 @@ function App() {
       </p>
       <span className="rolled-number">You Rolled: {rolled}</span>
       <div className="dice-container">{diceElements}</div>
-
       <button className="roll-btn" onClick={tenzies ? newGame : newRandomDices}>
         {tenzies ? "New Game" : "Roll"}
       </button>
