@@ -1,0 +1,95 @@
+* {
+  box-sizing: border-box;
+  font-weight: bold;
+}
+
+body {
+  background-color: #2b283a;
+  color: #2b283a;
+  margin: 0;
+  padding: 30px;
+}
+
+.card {
+  max-width: 850px;
+  color: #2b283a;
+  background-color: #f5f5f5;
+  padding: 30px;
+  margin: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 3px #ffffff1d;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.card-title {
+  font-size: 2.5rem;
+  margin: 20px 0;
+}
+
+.card-text {
+  font-size: 1.25rem;
+  text-align: center;
+  font-weight: normal;
+  margin-bottom: 30px;
+}
+
+.dice-container {
+  margin: 30px 0;
+  display: grid;
+  gap: 20px;
+  grid-template: auto auto / repeat(5, 1fr);
+}
+
+@media only screen and (max-width: 600px) {
+  .dice-container {
+    grid-template: auto auto / repeat(4, 1fr);
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .dice-container {
+    grid-template: auto auto / repeat(3, 1fr);
+  }
+}
+
+@media only screen and (max-width: 325px) {
+  .dice-container {
+    grid-template: auto auto / repeat(2, 1fr);
+  }
+}
+
+.dice-item {
+  background-color: #ffffff;
+  font-size: 2rem;
+  padding: 15px 25px;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0 4px 4px 0 #00000042;
+  cursor: pointer;
+}
+
+.dice-item-sellected {
+  background-color: #59e391;
+  box-shadow: 0 0#00000000;
+}
+
+.roll-btn {
+  background-color: #5035ff;
+  color: #ffffff;
+  width: 210px;
+  font-size: 35px;
+  font-weight: normal;
+  border: 0;
+  border-radius: 8px;
+  padding: 10px 0;
+  margin-top: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 4px 0 #0000003d;
+}
+
+.rolled-number {
+  font-size: 1.5rem;
+}
