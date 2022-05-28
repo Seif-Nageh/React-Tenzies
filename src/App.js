@@ -8,17 +8,27 @@ function App() {
   const [dices, setDices] = useState(allNewDice());
   const [rolled, setRolled] = useState(0);
   const [tenzies, setTenzies] = useState(false);
-
+  const highScore = localStorage.getItem("highScore") || 0;
+  // if (highScore === 0) {
+  //   localStorage.setItem("highScore", rolled);
+  // }
   useEffect(() => {
     const allHeld = dices.every((dice) => dice.isSellected);
     const allSameValue = dices.every((dice) => dice.value === dices[0].value);
 
     if (allHeld && allSameValue) {
+      if (highScore === 0 || rolled < highScore) {
+        localStorage.setItem("highScore", rolled);
+      }
       return setTenzies((oldValue) => {
         return true;
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dices]);
+
+  // function highScores() {
+  // }
 
   function allNewDice() {
     const newDice = [];
@@ -70,13 +80,14 @@ function App() {
 
   return (
     <main className="card">
-      {tenzies && <Confetti numberOfPieces={500} gravity={0.05} />}
+      {tenzies && <Confetti numberOfPieces={500} />}
       <p className="card-title">Tenzies</p>
       <p className="card-text">
         Roll until all dice are the same. Click each die to freeze it at its
         current value between rolls.
       </p>
-      <span className="rolled-number">You Rolled: {rolled}</span>
+      <span className="rolled-number">High Score: {highScore}</span>
+      <span>You Rolled: {rolled}</span>
       <div className="dice-container">{diceElements}</div>
       <button className="roll-btn" onClick={tenzies ? newGame : newRandomDices}>
         {tenzies ? "New Game" : "Roll"}
